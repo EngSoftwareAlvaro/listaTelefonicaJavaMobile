@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">listaTelefonica</string>
+    <string name="entre_com_o_nome">Entre com o nome</string>
+    <string name="entre_com_telefone">Entre com telefone</string>
+    <string name="salvar">salvar</string>
+    <string name="entre_com_a_sua_data_de_nascimento">Entre com a sua data de nascimento</string>
 </resources>
