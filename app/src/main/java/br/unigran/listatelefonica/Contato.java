@@ -1,12 +1,12 @@
 package br.unigran.listatelefonica;
 
-import java.util.Date;
+
 
 public class Contato {
     private Integer id;
     private String nome;
     private String telefone;
-    private String dataNasc;
+    private String dataNascimento;
 
     public Integer getId() {
         return id;
@@ -32,11 +32,14 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public String getDataNasc() {
-        return dataNasc;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataNasc(String dataNasc) {
-        this.dataNasc = dataNasc;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
+
+    @Override
+    public String toString(){ return nome;}
 }

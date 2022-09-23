@@ -3,9 +3,7 @@ package br.unigran.bancodados;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.Currency;
 import java.util.List;
 
 import br.unigran.listatelefonica.Contato;
@@ -20,12 +18,12 @@ public class ContatoDB {
         ContentValues valores = new ContentValues();
         valores.put("nome",contato.getNome());
         valores.put("telefone",contato.getTelefone());
-        valores.put("dataNasc",contato.getDataNasc());
+        valores.put("dataNascimento",contato.getDataNascimento());
         if(contato.getId()>0)
-            conexao.update("ListaTelefonica",valores,"id=?",
+            conexao.update("Lista",valores,"id=?",
                     new String[]{contato.getId().toString()});
         else
-            conexao.insertOrThrow("ListaTelefonica",null,valores);
+            conexao.insertOrThrow("Lista",null,valores);
         conexao.close();
     }
 
@@ -39,8 +37,8 @@ public class ContatoDB {
     public void lista(List dados){
         dados.clear();
         conexao=db.getReadableDatabase();
-        String names[]={"id","nome","telefone","dataNasc"};
-        Cursor query = conexao.query("ListaTelefonica",names,
+        String names[]={"id","nome","telefone","dataNascimento"};
+        Cursor query = conexao.query("Lista",names,
                 null,null,null,
                 null,"nome");
         while (query.moveToNext()){
@@ -48,7 +46,7 @@ public class ContatoDB {
             contato.setId(Integer.parseInt(query.getString(0)));
             contato.setNome(query.getString(1));
             contato.setTelefone(query.getString(2));
-            contato.setDataNasc(query.getString(3));
+            contato.setDataNascimento(query.getString(3));
             dados.add(contato);
         }
         conexao.close();
